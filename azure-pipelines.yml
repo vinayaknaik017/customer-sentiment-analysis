@@ -4,16 +4,33 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+  branches:
+    include:
+      - main
 
 pool:
   name: WindowsAgentPool
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.10'
+
+- script: python -m pip install --upgrade pip
+  displayName: 'Upgrade pip'
+
+- script: pip install -r requirements.txt
+  displayName: 'Install dependencies'
+
+- script: python scrape_reviews.py
+  displayName: 'Scrape Reviews'
+
+- script: python analyze_sentiment.py
+  displayName: 'Analyze Sentiment'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: 'data/sentiment_results.csv'
+    artifactName: 'SentimentOutput'
+    publishLocation: 'Container'
