@@ -10,26 +10,10 @@ pool:
   name: WindowsAgentPool
 
 steps:
-- script: echo ✅ Starting Sentiment Analysis Pipeline...
-  displayName: 'Step 1: Begin'
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
 
 - script: |
-    echo ✅ Installing dependencies...
-    pip install -r requirements.txt
-
-    echo ✅ Running scrape_reviews.py...
-    python scrape_reviews.py
-
-    echo ✅ Running analyze_sentiment.py...
-    python analyze_sentiment.py
-
-    echo ✅ Done! Output saved to data/sentiment_results.csv
-  displayName: 'Step 2: Run Full Pipeline'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: 'data/sentiment_results.csv'
-    artifactName: 'SentimentResults'
-    publishLocation: 'Container'
-  displayName: 'Step 3: Upload Sentiment Results CSV'
-
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
