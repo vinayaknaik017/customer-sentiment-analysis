@@ -3,8 +3,8 @@ import requests
 import os
 
 # Load environment variables or hardcode for local testing
-endpoint = os.getenv("AZURE_ENDPOINT", "gIiJpcg9DDIo8nM4UrXT5br8SD07JQQJ99BGACYeBjFXJ3w3AAAEACOGZ7fM")
-key = os.getenv("AZURE_KEY", "https://textanalytics-vinayak.cognitiveservices.azure.com/")
+endpoint = os.getenv("AZURE_ENDPOINT", "https://textanalytics-vinayak.cognitiveservices.azure.com/")
+key = os.getenv("AZURE_KEY", "gIiJpcg9DDIo8nM4UrXT5br8SD07JQQJ99BGACYeBjFXJ3w3AAAEACOGZ7fM")
 headers = {
     "Ocp-Apim-Subscription-Key": key,
     "Content-Type": "application/json"
