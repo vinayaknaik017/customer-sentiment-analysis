@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  name: WindowsAgentPool
+  name: 
 
 steps:
 - script: echo Hello, world!
